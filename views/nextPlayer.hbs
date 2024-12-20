@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Added</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+</head>
+<body class="bg-gray-100 flex justify-center items-center h-screen">
+    <div class="absolute top-0 left-0 p-4">
+        <a href="javascript:history.back()">
+            <img src="/img/backarrow.png" alt="Back" style="width: 40px; height: 30px;" />
+        </a>
+    </div>
+
+    <div class="absolute top-0 right-0 p-4">
+        <a href="/dashboard">
+            <img src="/img/home.png" alt="Home" style="width: 30px; height: 30px;" />
+        </a>
+    </div>
+    
+    <div class="container mx-auto px-4 py-8">
+        <header class="text-center mb-8">
+            <h1 class="text-gray-600 text-6xl">Player Management</h1>
+        </header>
+
+        <section class="success-message text-center mb-4">
+            <p class="text-xl">Player Added Successfully!</p>
+            {{#if minPlayersNeeded}}
+              <p class="text-lg">Add {{minPlayersNeeded}} more player(s) to complete the team.</p>
+            {{else}}
+              <p class="text-lg">You can add up to {{maxPlayersAllowed}} more player(s).</p>
+            {{/if}}
+        </section>
+
+        <section class="player-list mb-6">
+            <h2 class="text-3xl font-semibold mb-4">Players Added:</h2>
+            <ul class="list-disc pl-8">
+                {{#each players}}
+                    <li class="text-lg">{{this.firstName}} {{this.lastName}} - {{this.position}}</li>
+                {{/each}}
+            </ul>
+        </section>
+
+        <section class="navigation-buttons text-center">
+            <a href="/createPlayers?teamId={{teamId}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-200 ease-in-out text-lg mr-4">Add Another Player</a>
+            <a href="/teamDetails/{{teamId}}" class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded transition duration-200 ease-in-out text-lg">View Team Roster</a>
+        </section>
+    </div>
+
+    <footer class="text-center py-4 mt-8">
+        <p>&copy; {{currentYear}} AKtion NBA Team Creator</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{team.teamName}} - Team Details</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <style>
+        .bin-icon {
+            width: 20px;
+            height: 20px;
+            background-image: url('/img/binplayerclosed.png');
+            background-size: contain;
+            display: inline-block;
+            cursor: pointer;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .bin-icon:hover {
+            background-image: url('/img/binplayeropen.png');
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="absolute top-0 left-0 p-4">
+        <a href="javascript:history.back()">
+            <img src="/img/backarrow.png" alt="Back" style="width: 40px; height: 30px;" />
+        </a>
+    </div>
+
+    <div class="absolute top-0 right-0 p-4">
+        <a href="/dashboard">
+            <img src="/img/home.png" alt="Home" style="width: 30px; height: 30px;" />
+        </a>
+    </div>
+
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-gray-600 text-6xl text-center mb-6">{{team.teamName}} Roster</h1>
+
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm text-left text-gray-500">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">Name</th>
+                        <th scope="col" class="px-6 py-3">Position</th>
+                        <th scope="col" class="px-6 py-3">Number</th>
+                        <th scope="col" class="px-6 py-3">Height</th>
+                        <th scope="col" class="px-6 py-3">Age</th>
+                        <th scope="col" class="px-6 py-3">Remove Player</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each team.players}}
+                        <tr class="bg-white border-b">
+                            <td class="px-6 py-4">{{this.firstName}} {{this.lastName}}</td>
+                            <td class="px-6 py-4">{{this.position}}</td>
+                            <td class="px-6 py-4">{{this.number}}</td>
+                            <td class="px-6 py-4">{{this.height}}</td>
+                            <td class="px-6 py-4">{{this.age}}</td>
+                            <td class="px-6 py-4">
+                                <form action="/deletePlayer/{{this._id}}" method="POST">
+                                    <button type="submit" class="inline-block">
+                                        <span class="bin-icon"></span>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    {{else}}
+                        <tr class="bg-white border-b">
+                            <td colspan="6" class="px-6 py-4 text-center">No players in this team.</td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+        {{#if canAddMorePlayers}}
+        <div class="text-center mt-6">
+            <a href="/createPlayers?teamId={{team._id}}" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition duration-200 ease-in-out">Add More Players</a>
+        </div>
+        {{/if}}
+    </div>
+    <footer class="text-center py-4 mt-8">
+        <p>&copy; {{currentYear}} AKtion NBA Team Creator</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Teamsssssssssssss</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">   
+</head>
+<body class="bg-gray-100">
+    <div class="absolute top-0 left-0 p-4">
+        <a href="javascript:history.back()">
+            <img src="/img/backarrow.png" alt="Back" style="width: 40px; height: 30px;" />
+        </a>
+    </div>
+    <div class="container mx-auto p-4">
+        <h1 class="text-gray-600 text-6xl">All NBA Teams</h1>
+        {{#each teams}}
+        <p>{{this.teamName}}</p>
+        {{/each}}
+        {{ <div class="grid grid-cols-4 gap-4">
+            {{#each teams}}
+
+            <div class="team-card">
+                <a href="/team/{{this._id}}" class="block p-4 bg-white rounded-lg shadow hover:shadow-lg transition">
+                    <img src="/img/{{this.teamName}}.png" alt="{{this.teamName}}" class="team-logo">
+                    <div class="team-name text-xl text-center">{{this.teamName}}</div>
+                </a>
+            </div>
+            {{else}}
+            <div>No teams found.</div>
+            {{/each}}
+        </div> --}}
+    </div>
+</body>
+</html>
