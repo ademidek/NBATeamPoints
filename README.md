@@ -1,16 +1,16 @@
 The content below is an example project proposal / requirements document. Replace the text below the lines marked "__TODO__" with details specific to your project. Remove the "TODO" lines.
 
-# NBA Team Creator
+# NBA % of Team Points Calculator
 
 ## Overview
 
-In the NBA there are many metrics used to measure player performance. The most basic statistics are things such as points, assists, rebounds, steals, and blocks amongst a plethora of others. Without a doubt there are players who stand out on every team, and these players produce the highest volume of stats. However, it is unlikely that these 'star players' will all play on the same team.
+In the NBA there are many metrics used to measure player performance. The most basic statistics are things such as points, assists, rebounds, steals, and blocks, amongst a plethora of others. Without a doubt there are players who stand out on every team in different ways, and these players produce the best numbers undeniably. One can argue however that the most important statistic to a team's success is none other than the most basic one - points. As in the aim of the game in nearly every sport, the team with the most points wins.
 
-This app gives the user the abiility to create their own roster of NBA players on a singular team. By doing this, the player can use their imagination to dream up the best team possible.
+This app introduces a new statistic to the fray of NBA statistics, letting us know the direct impact certain players have on the point total of their respective teams. In other words, the user will not only have access to all other regular statistics, but will also be able to see the percentage of a team's points can be attributed to a single player. Furthermore the user will have the abiility to create their own roster of NBA players on a singular team. By doing this, the player can use their imagination to dream up the best team possible.
 
 ## Data Model
 
-The application will store Players, Teams and Player Data
+The application will store Players, Teams, and Player Data
 
 * teams can have multiple players (via references)
 * each player can have multiple parameters (by embedding)
@@ -21,10 +21,21 @@ An Example Player:
 {
   team: "Dallas Mavericks"
   player: "Luka Doncic",
-  position: "PG"
+  position: "PG", "SG"
   age: 28,
   height: "6'8"
   number: 77,
+  points per game: 28
+  assists per game: 9
+  rebounds per game: 9
+  field goal percentage: 50%
+  three point percentage: 40%
+  steals per game: 2
+  blocks per game: 1
+  turnovers per game: 2
+  personal fouls per game: 2.3
+  +/- : 5
+  
 }
 ```
 
@@ -34,8 +45,8 @@ An Example List with Embedded Items:
 {
   team: "Dallas Mavericks",
   items: [
-    { name: "Luka Doncic", number: 77, position: "PG", height: "6'8"},
-    { name: "Kyrie Irving", number: 11, position: "SG", height: "6'3"},
+    { name: "Luka Doncic", number: 77, position: "PG", height: "6'8", ...},
+    { name: "Kyrie Irving", number: 11, position: "SG", height: "6'3", ...},
   ],
   createdAt: // timestamp
 }
@@ -78,7 +89,7 @@ Home Page
 
 ## User Stories or Use Cases
 
-(__TODO__: write out how your application will be used through [user stories](http://en.wikipedia.org/wiki/User_story#Format) and / or [use cases](https://en.wikipedia.org/wiki/Use_case))
+[user stories](http://en.wikipedia.org/wiki/User_story#Format) and / or [use cases](https://en.wikipedia.org/wiki/Use_case))
 
 1. as a user, I can register on the site
 2. as a user, I can log in to the site
@@ -93,14 +104,8 @@ Home Page
 
 ## Research Topics
 
-(__TODO__: the research topics that you're planning on working on along with their point values... and the total points of research topics listed)
-
-* (3 points) Unit testing with Jest
-    * I'm going to be using the Jest framework for unit testing
-* (5 points) tailwind.css
-    * using tailwind.css as the css framework; it's a challenging library to learn, so I've assigned it 5 points
-
-8 points total out of 8 required points 
+Unit testing with Jest
+Tailwind.css as the css framework
 
 ## [Link to Initial Main Project File](app.mjs) 
 
